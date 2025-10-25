@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pocket Classroom</title>
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-dark text-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-gradient sticky-top px-3">
+    <a class="navbar-brand" href="#">🎒 Pocket Classroom</a>
+    <div class="ms-auto">
+      <button class="btn btn-outline-light me-2" id="btnLibrary">Library</button>
+      <button class="btn btn-outline-light me-2" id="btnAuthor">Author</button>
+      <button class="btn btn-outline-light" id="btnLearn">Learn</button>
+    </div>
+  </nav>
+
+  <!-- Main Sections -->
+  <main class="container my-4">
+    <!-- Library Section -->
+    <section id="sectionLibrary" class="d-none">
+      <div class="d-flex justify-content-between mb-3">
+        <h2>📚 Your Capsules</h2>
+        <div>
+          <button class="btn btn-success me-2" id="btnNewCapsule">New Capsule</button>
+          <input type="file" id="importFile" class="d-none" />
+          <button class="btn btn-secondary" id="btnImport">Import JSON</button>
+        </div>
+      </div>
+      <div id="capsuleGrid" class="row g-3"></div>
+    </section>
+
+    <!-- Author Section -->
+    <section id="sectionAuthor" class="d-none">
+      <h2>✍️ Author Capsule</h2>
+      <form id="authorForm" class="mt-3">
+        <!-- Meta Info -->
+        <div class="mb-3">
+          <label class="form-label">Title *</label>
+          <input type="text" class="form-control" id="capTitle" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-control" id="capSubject" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Level</label>
+          <select class="form-select" id="capLevel">
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" id="capDesc" rows="2"></textarea>
+        </div>
+
+        <!-- Notes Editor -->
+        <div class="mb-4">
+          <label class="form-label">Notes (one per line)</label>
+          <textarea class="form-control" id="notesEditor" rows="4"></textarea>
+        </div>
+
+        <!-- Flashcards Editor -->
+        <div class="mb-4">
+          <label class="form-label">Flashcards</label>
+          <div id="flashcardsEditor"></div>
+          <button type="button" class="btn btn-outline-primary mt-2" id="btnAddFlashcard">+ Add Flashcard</button>
+        </div>
+
+        <!-- Quiz Editor -->
+        <div class="mb-4">
+          <label class="form-label">Quiz Questions</label>
+          <div id="quizEditor"></div>
+          <button type="button" class="btn btn-outline-primary mt-2" id="btnAddQuiz">+ Add Question</button>
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 Save Capsule</button>
+      </form>
+    </section>
+
+    <!-- Learn Section -->
+    <section id="sectionLearn" class="d-none">
+      <h2>🧠 Learn Mode</h2>
+      <div class="mb-3">
+        <label class="form-label">Select Capsule</label>
+        <select class="form-select" id="learnSelector"></select>
+      </div>
+
+      <ul class="nav nav-tabs mb-3" id="learnTabs">
+        <li class="nav-item"><button class="nav-link active" data-tab="notes">Notes</button></li>
+        <li class="nav-item"><button class="nav-link" data-tab="flashcards">Flashcards</button></li>
+        <li class="nav-item"><button class="nav-link" data-tab="quiz">Quiz</button></li>
+      </ul>
+      
+<div id="learnContent">
+        <!-- Notes Tab -->
+        <div id="tabNotes" class="learn-tab">
+          <input type="text" class="form-control mb-2" id="noteSearch" placeholder="Search notes..." />
+          <ol id="notesList" class="list-group list-group-numbered"></ol>
+        </div>
+
+        <!-- Flashcards Tab -->
+        <div id="tabFlashcards" class="learn-tab d-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <div id="flashcardText" class="fs-4 mb-3">Front</div>
+              <button class="btn btn-outline-light" id="btnFlip">🔄 Flip</button>
+              <div class="mt-3">
+                <button class="btn btn-outline-success me-2" id="btnKnown">✅ Known</button>
+                <button class="btn btn-outline-warning" id="btnUnknown">❓ Unknown</button>
+              </div>
+              <div class="mt-3">
+                <button class="btn btn-secondary me-2" id="btnPrev">⬅️ Prev</button>
+                <button class="btn btn-secondary" id="btnNext">➡️ Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Tab -->
+        <div id="tabQuiz" class="learn-tab d-none">
+          <div id="quizContainer"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App Scripts -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/author.js"></script>
+  <script type="module" src="js/learn.js"></script>
+  <script type="module" src="js/library.js"></script>
+  <script type="module" src="js/storage.js"></script>
+</body>
+</html>

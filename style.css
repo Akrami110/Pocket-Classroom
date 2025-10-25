@@ -1,0 +1,60 @@
+/* Base */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark .navbar {
+  background: linear-gradient(to right, #0f2027, #2c5364);
+}
+
+body.dark .learn-tab,
+body.dark #notesList li,
+body.dark .quiz-block {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+/* Light Theme */
+body.light {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+body.light .navbar {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
+body.light .learn-tab,
+body.light #notesList li,
+body.light .quiz-block {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+/* Shared Styles */
+.navbar-brand {
+  font-weight: bold;
+}
+
+.learn-tab {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#notesList li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
